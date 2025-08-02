@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import CreatePost from '@/components/CreatePost';
 import PostCard from '@/components/PostCard';

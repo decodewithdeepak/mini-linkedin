@@ -9,7 +9,7 @@ export async function GET(
 ) {
     try {
         await dbConnect();
-        
+
         const params = await context.params;
         const { id } = params;
 
