@@ -192,17 +192,6 @@ export default function AuthForms() {
                         </div>
                     </div>
                 </div>
-
-                {/* Demo Credentials */}
-                {isLogin && (
-                    <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
-                        <h3 className="text-sm font-semibold text-blue-900 mb-2">🎯 Demo Credentials</h3>
-                        <div className="text-sm text-blue-800 space-y-1">
-                            <p><strong>Email:</strong> deepak.modi@example.com</p>
-                            <p><strong>Password:</strong> password123</p>
-                        </div>
-                    </div>
-                )}
             </div>
         </div>
     );
