@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
@@ -45,13 +45,7 @@ export default function ProfilePage() {
         }
     }, [currentUser, authLoading, router]);
 
-    useEffect(() => {
-        if (currentUser && userId) {
-            fetchProfile();
-        }
-    }, [currentUser, userId]);
-
-    const fetchProfile = async () => {
+    const fetchProfile = useCallback(async () => {
         try {
             const response = await fetch(`/api/users/${userId}`);
             const data = await response.json();
@@ -62,12 +56,18 @@ export default function ProfilePage() {
             } else {
                 setError(data.message);
             }
-        } catch (err) {
+        } catch {
             setError('Failed to fetch profile');
         } finally {
             setLoading(false);
         }
-    };
+    }, [userId]);
+
+    useEffect(() => {
+        if (currentUser && userId) {
+            fetchProfile();
+        }
+    }, [currentUser, userId, fetchProfile]);
 
     if (authLoading) {
         return (

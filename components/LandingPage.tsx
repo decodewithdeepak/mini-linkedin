@@ -1,12 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { Users, MessageSquare, UserCheck, ArrowRight, Star, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export default function LandingPage() {
-    const [isLogin, setIsLogin] = useState(true);
-
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
             {/* Header */}
@@ -47,7 +44,7 @@ export default function LandingPage() {
                                 href="/auth"
                                 className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all transform hover:scale-105"
                             >
-                                Join Now - It's Free
+                                Join Now - It&apos;s Free
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
                             <button className="inline-flex items-center px-8 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">

@@ -5,12 +5,15 @@ import Post from '@/models/Post';
 
 export async function GET(
     request: Request,
-    { params }: { params: { id: string } }
+    context: { params: Promise<{ id: string }> }
 ) {
     try {
         await dbConnect();
+        
+        const params = await context.params;
+        const { id } = params;
 
-        const user = await User.findById(params.id).select('-password');
+        const user = await User.findById(id).select('-password');
         if (!user) {
             return NextResponse.json(
                 { message: 'User not found' },
@@ -18,7 +21,7 @@ export async function GET(
             );
         }
 
-        const posts = await Post.find({ author: params.id })
+        const posts = await Post.find({ author: id })
             .sort({ createdAt: -1 })
             .populate('author', 'name');
 
@@ -32,7 +35,7 @@ export async function GET(
             },
             posts,
         });
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Fetch user profile error:', error);
         return NextResponse.json(
             { message: 'Something went wrong' },

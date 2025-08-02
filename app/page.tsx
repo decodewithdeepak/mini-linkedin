@@ -21,7 +21,6 @@ interface Post {
 
 export default function Home() {
   const { user, isLoading } = useAuth();
-  const router = useRouter();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -36,7 +35,7 @@ export default function Home() {
       } else {
         setError(data.message);
       }
-    } catch (err) {
+    } catch {
       setError('Failed to fetch posts');
     } finally {
       setLoading(false);

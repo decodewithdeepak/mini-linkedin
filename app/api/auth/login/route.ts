@@ -48,7 +48,7 @@ export async function POST(request: Request) {
                 bio: user.bio,
             },
         });
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Login error:', error);
         return NextResponse.json(
             { message: 'Something went wrong' },

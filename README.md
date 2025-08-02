@@ -195,12 +195,6 @@ For testing purposes, you can create demo accounts:
    - Vercel will automatically deploy your app
    - Your app will be available at `https://your-app-name.vercel.app`
 
-### Alternative Deployment Options
-
-- **Netlify**: Can be deployed with some configuration for API routes
-- **Railway**: Good for full-stack applications
-- **Render**: Free tier available for small projects
-
 ## 🧪 API Endpoints
 
 ### Authentication

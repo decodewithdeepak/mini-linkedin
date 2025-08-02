@@ -14,7 +14,7 @@ export async function GET() {
             .limit(50);
 
         return NextResponse.json({ posts });
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Fetch posts error:', error);
         return NextResponse.json(
             { message: 'Something went wrong' },
@@ -77,7 +77,7 @@ export async function POST(request: Request) {
             },
             { status: 201 }
         );
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Create post error:', error);
         return NextResponse.json(
             { message: 'Something went wrong' },
