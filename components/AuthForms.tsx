@@ -57,109 +57,152 @@ export default function AuthForms() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
-                <div>
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        {isLogin ? 'Sign in to your account' : 'Create your account'}
-                    </h2>
-                    <p className="mt-2 text-center text-sm text-gray-600">
-                        {isLogin ? "Don't have an account? " : 'Already have an account? '}
-                        <button
-                            type="button"
-                            onClick={() => setIsLogin(!isLogin)}
-                            className="font-medium text-blue-600 hover:text-blue-500"
-                        >
-                            {isLogin ? 'Sign up' : 'Sign in'}
-                        </button>
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center p-4">
+            <div className="max-w-md w-full">
+                {/* Logo */}
+                <div className="text-center mb-8">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl mb-4 shadow-lg">
+                        <span className="text-white font-bold text-2xl">in</span>
+                    </div>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                        {isLogin ? 'Welcome back' : 'Join Mini LinkedIn'}
+                    </h1>
+                    <p className="text-gray-600">
+                        {isLogin
+                            ? 'Sign in to your professional community'
+                            : 'Create your professional profile today'
+                        }
                     </p>
                 </div>
-                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-                    {error && (
-                        <div className="rounded-md bg-red-50 p-4">
-                            <div className="text-sm text-red-700">{error}</div>
-                        </div>
-                    )}
 
-                    <div className="space-y-4">
-                        {!isLogin && (
+                {/* Form Card */}
+                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                    <div className="p-8">
+                        {error && (
+                            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+                                <div className="flex items-center space-x-2">
+                                    <div className="text-red-600">⚠️</div>
+                                    <p className="text-sm text-red-600 font-medium">{error}</p>
+                                </div>
+                            </div>
+                        )}
+
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            {!isLogin && (
+                                <div>
+                                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                                        Full Name
+                                    </label>
+                                    <input
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        required={!isLogin}
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 bg-white transition-all"
+                                        placeholder="Enter your full name"
+                                    />
+                                </div>
+                            )}
+
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                                    Full Name
+                                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Email Address
                                 </label>
                                 <input
-                                    id="name"
-                                    name="name"
-                                    type="text"
-                                    required={!isLogin}
-                                    value={formData.name}
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    required
+                                    value={formData.email}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
-                                    placeholder="Enter your full name"
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 bg-white transition-all"
+                                    placeholder="Enter your email"
                                 />
                             </div>
-                        )}
 
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                Email Address
-                            </label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                required
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
-                                placeholder="Enter your email"
-                            />
-                        </div>
-
-                        <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                Password
-                            </label>
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                required
-                                value={formData.password}
-                                onChange={handleChange}
-                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
-                                placeholder="Enter your password"
-                            />
-                        </div>
-
-                        {!isLogin && (
                             <div>
-                                <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
-                                    Bio (Optional)
+                                <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Password
                                 </label>
-                                <textarea
-                                    id="bio"
-                                    name="bio"
-                                    rows={3}
-                                    value={formData.bio}
+                                <input
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    required
+                                    value={formData.password}
                                     onChange={handleChange}
-                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
-                                    placeholder="Tell us about yourself"
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 bg-white transition-all"
+                                    placeholder="Enter your password"
+                                    minLength={6}
                                 />
                             </div>
-                        )}
+
+                            {!isLogin && (
+                                <div>
+                                    <label htmlFor="bio" className="block text-sm font-semibold text-gray-700 mb-2">
+                                        Professional Bio
+                                    </label>
+                                    <textarea
+                                        id="bio"
+                                        name="bio"
+                                        value={formData.bio}
+                                        onChange={handleChange}
+                                        rows={3}
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 bg-white resize-none transition-all"
+                                        placeholder="Tell us about yourself professionally..."
+                                    />
+                                </div>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] disabled:hover:scale-100 font-semibold shadow-lg"
+                            >
+                                {loading ? (
+                                    <div className="flex items-center justify-center space-x-2">
+                                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                        <span>{isLogin ? 'Signing in...' : 'Creating account...'}</span>
+                                    </div>
+                                ) : (
+                                    isLogin ? 'Sign In' : 'Create Account'
+                                )}
+                            </button>
+                        </form>
                     </div>
 
-                    <div>
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-                        >
-                            {loading ? 'Loading...' : (isLogin ? 'Sign In' : 'Sign Up')}
-                        </button>
+                    {/* Switch Mode */}
+                    <div className="px-8 py-6 bg-gray-50 border-t border-gray-100">
+                        <div className="text-center">
+                            <p className="text-gray-600">
+                                {isLogin ? "Don't have an account?" : 'Already have an account?'}
+                            </p>
+                            <button
+                                onClick={() => {
+                                    setIsLogin(!isLogin);
+                                    setError('');
+                                    setFormData({ name: '', email: '', password: '', bio: '' });
+                                }}
+                                className="mt-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                            >
+                                {isLogin ? 'Create a new account' : 'Sign in instead'}
+                            </button>
+                        </div>
                     </div>
-                </form>
+                </div>
+
+                {/* Demo Credentials */}
+                {isLogin && (
+                    <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
+                        <h3 className="text-sm font-semibold text-blue-900 mb-2">🎯 Demo Credentials</h3>
+                        <div className="text-sm text-blue-800 space-y-1">
+                            <p><strong>Email:</strong> deepak.modi@example.com</p>
+                            <p><strong>Password:</strong> password123</p>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

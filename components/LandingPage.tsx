@@ -12,7 +12,7 @@ export default function LandingPage() {
                     <div className="flex justify-between items-center h-16">
                         <div className="flex items-center space-x-2">
                             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-lg">L</span>
+                                <span className="text-white font-bold text-lg">in</span>
                             </div>
                             <span className="text-xl font-bold text-gray-900">MiniLinkedIn</span>
                         </div>
@@ -213,7 +213,7 @@ export default function LandingPage() {
                     <div className="text-center">
                         <div className="flex items-center justify-center space-x-2 mb-4">
                             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-lg">L</span>
+                                <span className="text-white font-bold text-lg">in</span>
                             </div>
                             <span className="text-xl font-bold text-white">MiniLinkedIn</span>
                         </div>
